@@ -16,6 +16,8 @@ class Obj{
         img.src = this.a 
         des.drawImage(img,this.x,this.y,this.w,this.h)
     }
+
+
     atual_monstro(){
         this.x += this.comand
         if(this.x <=2){
@@ -31,6 +33,8 @@ class Obj{
             false
         }
     }
+
+
     atual_inimigo(){
         this.y += 2
         if(this.y >= 780){
@@ -40,6 +44,12 @@ class Obj{
     recomeca(){
         this.y = -100
         this.x = Math.floor(Math.random() * ((416 - 2 + 1) + 2)) // quando o inimigo sair da tela
+    }
+    mov_amb(){
+        this.y += 2
+        if(this.y >= 780){
+            this.y = -100
+        }
     }
 }
 
