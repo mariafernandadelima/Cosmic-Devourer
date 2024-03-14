@@ -9,7 +9,7 @@ let txt_pts = new Texto()
 let pts = new Texto()
 let txt_vidas = new Texto()
 let n_vidas = new Texto()
-const som1 = new Audio('./assets/audio/musica-tema.aiff')
+const som1 = new Audio('./assets/audio/musica-tema.mp3')
 const som2 = new Audio('')
 som1.volume = 1.0
 som1.loop = true
@@ -69,22 +69,23 @@ let lixo = {
     }
 }
 document.addEventListener('keydown', (ev)=>{
-    if(ev.key === 'ArrowRight'){
+    if(ev.key === 'ArrowLeft'){
         monstro.dir -=5
     }
-    if(ev.key === 'ArrowLeft'){
+    if(ev.key === 'ArrowRight'){
         monstro.dir +=5
     }   
 })
 
 document.addEventListener('keyup', (ev)=>{
-    if(ev.key === 'ArrowRight'){
-       monstro.dir = 0
-    }
     if(ev.key === 'ArrowLeft'){
        monstro.dir = 0
     }
+    if(ev.key === 'ArrowRight'){
+       monstro.dir = 0
+    }
 })
+
 function colisao(){
     lixo_espacial.forEach((lixo)=>{
         if(monstro.colid(lixo)){
