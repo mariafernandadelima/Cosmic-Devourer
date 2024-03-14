@@ -25,7 +25,7 @@ class Obj{
     }
 
 }
-class Disco extends Obj{
+class lixo extends Obj{
     vel = Math.random() * (6 - 3) + 3
 
     mov(){
@@ -42,5 +42,4 @@ class BG extends Obj{
         }
     }
 }
-
 
