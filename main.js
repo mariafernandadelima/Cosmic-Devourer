@@ -4,7 +4,7 @@ let BG1 = new BG(0,0,500,700,'assets/background.jpg')
 let BG2 = new BG(0,-700,500,700,'assets/background2.jpg')
 let BG3 = new BG(0,-1400,500,700,'assets/background.jpg')
 let BG4 = new BG(0,-2100,500,700,'assets/background2.jpg')
-let Monstro = new Monstro(200,620,50,70,'assets/nave.png')
+let monstro = new Monstro(200,620,50,70,'assets/nave.png')
 let txt_pts = new Texto()
 let pts = new Texto()
 let txt_vidas = new Texto()
@@ -32,6 +32,14 @@ document.addEventListener('keyup', (ev)=>{
         nav1.dir = 0
     }
 })
+function colisao(){
+    grupoDiscos.forEach((lixo)=>{
+        if(monstro.colid(lixo)){
+            lixo_espacial.splice(lixo_espacial.indexOf(lixo), 1)
+            monstro.vida -=1
+        }
+    })
+}
 
 function atualiza(){
     BG1.mov(0,2100)
