@@ -1,56 +1,37 @@
 class Obj{
-    constructor(x,y,w,h,a){
+    constructor(x,y,w,h,at){
         this.x = x
         this.y = y
         this.w = w
         this.h = h
-        this.a = a
+        this.at = at
+        
     }
     des_obj(){
-        des.fillStyle = this.a
-        des.fillRect(this.x,this.y,this.w,this.h,this.a)
-    }
-
-    des_img(){
         let img = new Image()
-        img.src = this.a 
+        img.src = this.at
         des.drawImage(img,this.x,this.y,this.w,this.h)
     }
 
-
-    atual_monstro(){
-        this.x += this.comand
-        if(this.x <=2){
-            this.x = 2
-        }else if(this.x >= 416){
-            this.x = 416
-        }
-    }
-    point(objeto){
-        if((objeto.y>=680)&&(objeto.y <= 684)){
-            return true
+    colid(objeto) {
+        if((this.x < objeto.x + objeto.w)&&
+            (this.x + this.w > objeto.x)&&
+            (this.y < objeto.y + objeto.h)&&
+            (this.y + this.h > objeto.y)){
+            return true       
         }else{
-            false
+            return false
         }
     }
 
+}
+class Disco extends Obj{
+    vel = Math.random() * (6 - 3) + 3
 
-    atual_inimigo(){
-        this.y += 2
-        if(this.y >= 780){
-            this.recomeca()
-        }
+    mov(){
+        this.y += this.vel
     }
-    recomeca(){
-        this.y = -100
-        this.x = Math.floor(Math.random() * ((416 - 2 + 1) + 2)) // quando o inimigo sair da tela
-    }
-    mov_amb(){
-        this.y += 2
-        if(this.y >= 780){
-            this.y = -100
-        }
-    }
+    
 }
 
 
