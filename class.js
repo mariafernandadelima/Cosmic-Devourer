@@ -22,12 +22,19 @@ class Obj{
             return false
         }
     }
-}
 
+    point(objeto){
+        if((objeto.y>=680)&&(objeto.y <= 684)){
+            return true
+        }else{
+            false
+        }
+    }
+}
     class Monstro extends Obj{
         dir = 0
         pts = 0
-        vida = 5
+        vida = 3
 
     mov(){
         this.x += this.dir
@@ -48,8 +55,6 @@ class Obj{
             this.frame = 1
     }
     this.a = "assets/img/" +nome+this.frame+".jpg"
-
-
     }
 }
 class Lixo extends Obj{
