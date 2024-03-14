@@ -1,16 +1,16 @@
 let des = document.getElementById('des').getContext('2d')
 
-let BG1 = new BG(0,0,500,700,'./assets/fundo.jpg')
-let BG2 = new BG(0,-700,500,700,'./assets/fundo.jpg')
-let BG3 = new BG(0,-1400,500,700,'./assets/fundo.jpg')
-let BG4 = new BG(0,-2100,500,700,'./assets/fundo.jpg')
-let monstro = new Monstro(200,620,50,70,'./assets/img/monstro')
+let BG1 = new BG(0,0,500,700,'./assets/img/fundo.jpg')
+let BG2 = new BG(0,-700,500,700,'./assets/img/fundo2.jpg')
+let BG3 = new BG(0,-1400,500,700,'./assets/img/fundo.jpg')
+let BG4 = new BG(0,-2100,500,700,'./assets/img/fundo2.jpg')
+let monstro = new Monstro(200,620,50,70,'./assets/img/monstro.png')
 let txt_pts = new Texto()
 let pts = new Texto()
 let txt_vidas = new Texto()
 let n_vidas = new Texto()
 const som1 = new Audio('./assets/audio/musica-tema.aiff')
-const som2 = new Audio('./assets/audio/game-over.wav')
+const som2 = new Audio('')
 som1.volume = 1.0
 som1.loop = true
 som2.volume = 0.7
@@ -33,22 +33,22 @@ let lixo = {
         let pos_x4 = (Math.random() * (438 - 2 +1)+2)
         if(this.time1 >=60){
             this.time1 = 0
-            lixo_espacial.push(new lixo(pos_x,-200,50,50,'./assets/img/lixo.png'))
+            lixo_espacial.push(new Lixo(pos_x,-200,50,50,'./assets/img/lixo.png'))
             console.log(lixo_espacial)
         }
         if(this.time2 >=85){
             this.time2 = 0
-            lixo_espacial.push(new lixo(pos_x2,-300,50,50,'./assets/img/maca.png'))
+            lixo_espacial.push(new Lixo(pos_x2,-300,50,50,'./assets/img/banana.png'))
             console.log(lixo_espacial)
         }
         if(this.time3 >=135){
             this.time3 = 0
-            lixo_espacial.push(new lixo(pos_x3,-400,50,50,'./assets/img/banana.png'))
+            lixo_espacial.push(new Lixo(pos_x3,-400,50,50,'./assets/img/peixe.png'))
             console.log(lixo_espacial)
         }
         if(this.time4 >=135){
             this.time4 = 0
-            lixo_espacial.push(new lixo(pos_x4,-500,50,50,'./assets/img/peixe.png'))
+            lixo_espacial.push(new Lixo(pos_x4,-500,50,50,'./assets/img/maca.png'))
             console.log(lixo_espacial)
         }
     },
@@ -85,6 +85,14 @@ document.addEventListener('keyup', (ev)=>{
        monstro.dir = 0
     }
 })
+function colisao(){
+    lixo_espacial.forEach((lixo)=>{
+        if(monstro.colid(lixo)){
+            lixo_espacial.splice(lixo_espacial.indexOf(lixo), 1)
+            monstro.vida -=1
+        }
+    })
+}
 
 function desenha(){    
     BG1.des_obj()
