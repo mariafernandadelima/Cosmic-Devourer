@@ -23,6 +23,14 @@ class Obj{
             return false
         }
     }
+    
+    point(objeto){
+        if((objeto.y>=680)&&(objeto.y <= 684)){
+            return true
+        }else{
+            false
+        }
+    }
 
 }
 class lixo extends Obj{

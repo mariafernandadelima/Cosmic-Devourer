@@ -32,6 +32,20 @@ document.addEventListener('keyup', (ev)=>{
         nav1.dir = 0
     }
 })
+
+function game_over(){
+    if(monstro.vida <=0){
+        jogar = false
+        som1.pause()
+        // música com o jogo parado
+    }
+}
+
+function pontos(){
+    if(monstro.point(lixo)){
+        monstro.pts +=1
+    }
+}
 function colisao(){
     grupoDiscos.forEach((lixo)=>{
         if(monstro.colid(lixo)){
@@ -42,13 +56,16 @@ function colisao(){
 }
 
 function atualiza(){
+    if(jogar){
+    som1.play()
     BG1.mov(0,2100)
     BG2.mov(-700,1400)
     BG3.mov(-1400,700)
     BG4.mov(-2100,0)    
     Monstro.mov()
     lixo.atual()
-    colisao()    
+    colisao() 
+    }   
 }
 
 function main(){
