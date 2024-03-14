@@ -1,3 +1,5 @@
+let des = document.getElementById('des').getContext('2d')
+
 let inim1 = new BG(0,0,500,700,'assets/background.jpg')
 let inim2 = new BG(0,-700,500,700,'assets/background2.jpg')
 let inim3 = new BG(0,-1400,500,700,'assets/background.jpg')

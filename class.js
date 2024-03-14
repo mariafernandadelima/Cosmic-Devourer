@@ -5,7 +5,7 @@ class Obj{
         this.w = w
         this.h = h
         this.at = at
-        
+
     }
     des_obj(){
         let img = new Image()
@@ -32,6 +32,15 @@ class Disco extends Obj{
         this.y += this.vel
     }
     
+}
+class BG extends Obj{
+
+    mov(ini,lim){
+        this.y +=2
+        if(this.y > lim){
+            this.y = ini
+        }
+    }
 }
 
 
