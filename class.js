@@ -12,8 +12,6 @@ class Obj{
         img.src = this.at
         des.drawImage(img,this.x,this.y,this.w,this.h)
     }
-
-
     colid(objeto) {
         if((this.x < objeto.x + objeto.w)&&
             (this.x + this.w > objeto.x)&&
@@ -24,9 +22,23 @@ class Obj{
             return false
         }
     }
-
 }
-class Disco extends Obj{
+
+    class Monstro extends Obj{
+        dir = 0
+        pts = 0
+        vida = 5
+
+    mov(){
+        this.x += this.dir
+        if(this.x <= 0){
+            this.x =0
+        }else if(this.x >=450){
+            this.x = 450
+        }
+    }
+}
+class Lixo extends Obj{
     vel = Math.random() * (6 - 3) + 3
 
     mov(){
@@ -43,7 +55,12 @@ class BG extends Obj{
         }
     }
 }
-class Monstro extends Obj{
-
+class Texto{
+    des_text(texto,x,y,cor,font){
+        des.font = font
+        des.fillStyle = cor
+        des.fillText(texto,x,y)
     }
-    
+}
+
+
