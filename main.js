@@ -42,7 +42,7 @@ function game_over(){
 }
 
 function pontos(){
-    if(monstro.point(lixo)){
+    if(monstro.point(bomba)){
         monstro.pts +=1
     }
 }
