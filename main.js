@@ -3,14 +3,20 @@ let lixo = {
     time1: 0,
     time2: 0,
     time3: 0,
+    time4: 0,
+    bomba: 0,
 
     crialixo(){
         this.time1 += 1
         this.time2 += 1
         this.time3 += 1
+        this.time4 += 1
+        this.bomba += 1
         let pos_x = (Math.random() * (438 - 2 +1)+2)
         let pos_x2 = (Math.random() * (438 - 2 +1)+2)
         let pos_x3 = (Math.random() * (438 - 2 +1)+2)
+        let pos_x4 = (Math.random() * (438 - 2 +1)+2)
+        let bomba = (Math.random() * (438 - 2 +1)+2)
         if(this.time1 >=60){
             this.time1 = 0
             lixo_espacial.push(new lixo(pos_x,-200,50,50,'assets/disco.png'))
@@ -24,6 +30,16 @@ let lixo = {
         if(this.time3 >=135){
             this.time3 = 0
             lixo_espacial.push(new lixo(pos_x3,-400,50,50,'assets/disco3.png'))
+            console.log(lixo_espacial)
+        }
+        if(this.time4 >=135){
+            this.time4 = 0
+            lixo_espacial.push(new lixo(pos_x4,-400,50,50,'assets/disco3.png'))
+            console.log(lixo_espacial)
+        }
+        if(this.bomba >=135){
+            this.bomba = 0
+            lixo_espacial.push(new lixo(bomba,-400,50,50,'assets/disco3.png'))
             console.log(lixo_espacial)
         }
     },
@@ -44,19 +60,22 @@ let lixo = {
     }
 }
 function desenha(){    
+
+    BG1.des_obj()
+    BG2.des_obj()
+    BG3.des_obj()
+    BG4.des_obj()    
+    monstro.des_obj()    
+    lixo.des()
+
+
     txt_pts.des_text('Pontos:',20,40,'white','30px Times')
-    pts.des_text(Monstro.pts,120,40,'white','30px Times')
+    pts.des_text(monstro.pts,120,40,'white','30px Times')
     txt_vidas.des_text('Vidas:',380,40,'white','30px Times')
-    n_vidas.des_text(Monstro.vida,460,40,'white','30px Times')
+    n_vidas.des_text(monstro.vida,460,40,'white','30px Times')
 
-    if(jogar){
-        BG1.des_obj()
-        BG2.des_obj()
-        BG3.des_obj()
-        BG4.des_obj()    
-        Monstro.des_obj()    
-        lixo.des()
 
+   
+        
     }
     
-}
