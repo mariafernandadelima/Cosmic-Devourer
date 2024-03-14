@@ -11,7 +11,23 @@ class Monstro extends Obj{
             this.x = 450
         }
     }
+
+    anim(nome){
+        this.tempo += 1
+        if(this.tempo > 12 ){
+            this.tempo = 0
+            this.frame += 1
+        }
+        if(this.frame > 4 ){
+            this.frame = 1
+    }
+    this.a = "assets/img/" +nome+this.frame+".jpg"
+
+
+    }
 }
+
+
 
 class Texto{
     des_text(texto,x,y,cor,font){
