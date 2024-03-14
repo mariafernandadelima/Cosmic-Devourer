@@ -42,14 +42,15 @@ function game_over(){
 }
 
 function pontos(){
-    if(monstro.point(bomba)){
+    if(monstro.point(lixo)){
         monstro.pts +=1
     }
+
 }
 function colisao(){
-    grupoDiscos.forEach((lixo)=>{
-        if(monstro.colid(lixo)){
-            lixo_espacial.splice(lixo_espacial.indexOf(lixo), 1)
+    lixo_espacial.forEach((bomba)=>{
+        if(monstro.colid(bomba)){
+            lixo_espacial.splice(lixo_espacial.indexOf(bomba), 1)
             monstro.vida -=1
         }
     })
