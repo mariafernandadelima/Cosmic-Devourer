@@ -44,14 +44,19 @@ let lixo = {
     }
 }
 function desenha(){    
-    BG1.des_obj()
-    BG2.des_obj()
-    BG3.des_obj()
-    BG4.des_obj()    
-    Monstro.des_obj()    
-    lixo.des()
     txt_pts.des_text('Pontos:',20,40,'white','30px Times')
     pts.des_text(Monstro.pts,120,40,'white','30px Times')
     txt_vidas.des_text('Vidas:',380,40,'white','30px Times')
     n_vidas.des_text(Monstro.vida,460,40,'white','30px Times')
+
+    if(jogar){
+        BG1.des_obj()
+        BG2.des_obj()
+        BG3.des_obj()
+        BG4.des_obj()    
+        Monstro.des_obj()    
+        lixo.des()
+
+    }
+    
 }
