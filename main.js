@@ -5,7 +5,7 @@ let BG2 = new BG(0,-700,500,700,'./assets/img/fundo2.png')
 let BG3 = new BG(0,-1400,500,700,'./assets/img/fundo.png')
 let BG4 = new BG(0,-2100,500,700,'./assets/img/fundo2.png') 
 
-let monstro = new Monstro(200,620,50,70,'./assets/img/monstro_1.png')  
+let monstro = new Monstro(200,600,50,70,'./assets/img/monstro_1.png')  
 
 let txt_pts = new Texto()
 let pts = new Texto()
@@ -14,7 +14,7 @@ let n_vidas = new Texto()
 let txt_game = new Texto()
 
 const som1 = new Audio('./assets/audio/musica-tema.mp3')
-const som2 = new Audio('')
+const som2 = new Audio('./assets/audio/game-over.mp3')
 som1.volume = 1.0
 som1.loop = true
 som2.volume = 0.7
@@ -42,27 +42,27 @@ let lixo = {
         let pos_x3 = (Math.random() * (438 - 2 +1)+2)
         let pos_x4 = (Math.random() * (438 - 2 +1)+2)
         let pos_x5 = (Math.random() * (438 - 2 +1)+2)
-        if(this.time1 >=60){
+        if(this.time1 >=100){
             this.time1 = 0
             lixo_espacial.push(new Lixo(pos_x,-200,50,50,'./assets/img/lixo.png'))
-            console.log(lixo_espacial)
+            // console.log(lixo_espacial)
         }
-        if(this.time2 >=85){
+        if(this.time2 >=200){
             this.time2 = 0
             lixo_espacial.push(new Lixo(pos_x2,-300,50,50,'./assets/img/banana.png'))
-            console.log(lixo_espacial)
+            // console.log(lixo_espacial)
         }
-        if(this.time3 >=135){
+        if(this.time3 >=300){
             this.time3 = 0
             lixo_espacial.push(new Lixo(pos_x3,-400,50,50,'./assets/img/peixe.png'))
-            console.log(lixo_espacial)
+            // console.log(lixo_espacial)
         }
-        if(this.time4 >=135){
+        if(this.time4 >=400){
             this.time4 = 0
             lixo_espacial.push(new Lixo(pos_x4,-500,50,50,'./assets/img/maca.png'))
-            console.log(lixo_espacial)
+            // console.log(lixo_espacial)
         }
-        if(this.time5 >=135){
+        if(this.time5 >=220){
             this.time5 = 0
             lixo_espacial.push(new Lixo(pos_x5,-500,50,50,'./assets/img/bomba.png'))
             console.log(lixo_espacial)
@@ -86,20 +86,34 @@ let lixo = {
     }
 }
 document.addEventListener('keydown', (ev)=>{
+    
+    som1.play()
     if(ev.key === 'ArrowLeft'){
-        monstro.dir -=5
+        monstro.dir_x -=5
     }
     if(ev.key === 'ArrowRight'){
-        monstro.dir +=5
-    }   
+        monstro.dir_x +=5
+    }
+    if(ev.key === 'ArrowUp'){
+        monstro.dir_y -=5
+    } 
+    if(ev.key === 'ArrowDown'){
+        monstro.dir_y +=5
+    }    
 })
 
 document.addEventListener('keyup', (ev)=>{
     if(ev.key === 'ArrowLeft'){
-       monstro.dir = 0
+       monstro.dir_x = 0
     }
     if(ev.key === 'ArrowRight'){
-       monstro.dir = 0
+       monstro.dir_x = 0
+    }
+    if(ev.key === 'ArrowUp'){
+        monstro.dir_y = 0
+    } 
+    if(ev.key === 'ArrowDown'){
+        monstro.dir_y = 0
     }
 })
 
@@ -108,6 +122,7 @@ function game_over(){
     if(monstro.vida <=0){
         jogar = false
         som1.pause()
+        som2.play()
         // música com o jogo parado
     }
 }
@@ -153,7 +168,8 @@ function desenha(){
 
 function atualiza(){
     if(jogar){
-    som1.play()
+    
+    
     BG1.mov(0,2100)
     BG2.mov(-700,1400)
     BG3.mov(-1400,700)
