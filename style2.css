@@ -14,7 +14,7 @@ div{
     margin: auto;
     width: 500px;
     height: 700px;
-    border-top: 15px;
+    top: 15px;
     border-radius: 20px; 
     display: flex;
     flex-direction: row;
@@ -27,7 +27,6 @@ div{
 
 
 .nav-button{
-    /* background-color: #3d44c7; */
     border: none;
     color: white; 
     padding: 5px;

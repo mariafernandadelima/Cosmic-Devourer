@@ -168,8 +168,7 @@ function desenha(){
 
 function atualiza(){
     if(jogar){
-    
-    
+        
     BG1.mov(0,2100)
     BG2.mov(-700,1400)
     BG3.mov(-1400,700)
